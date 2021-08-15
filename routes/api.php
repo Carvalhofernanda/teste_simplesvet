@@ -15,5 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::resource('user', UserController::class);
     return $request->user();
+Route::resource('animal', 'API\AnimalController');
+Route::get('animal', 'API\AnimalController');
+
+Route::resource('cliente', 'API\ClienteController');
+Route::get('cliente', 'API\ClienteController');
 });

@@ -57,6 +57,7 @@ class complicadovet extends Command
         $rows = collect($columns)->map(function ($column) {
             return get_object_vars($column);
         });
+        
 
         return $this->table($headers, $rows);
     }
