@@ -37,21 +37,20 @@ class complicadovet extends Command
      */
     public function handle()
     {
-        $table = $this->argument('animal');
+        $table = $this->argument('animal', 'cliente');
 
-        if ($this->tableDontExist($table)) {
-            return $this->warn('Sorry, table not found.');
-        }
+        
 
         return $this->showTableDetails($table);
     }
+    
 
     protected function showTableDetails($table)
     {
         $columns = \Illuminate\Support\Facades\DB::select("DESC {$table}");
 
         $headers = [
-            'Field', 'Type', 'Null', 'Key', 'Default', 'Extra',
+            'Field', 'Type', 'Null', 'Key', 'Default',
         ];
 
         $rows = collect($columns)->map(function ($column) {
